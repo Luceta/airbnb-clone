@@ -39,11 +39,16 @@ DJANGO_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
 ]
+
+THIRD_PARTY_APPs = ["django_countries"]
+
 PROJECT_APPS = [
+    "core.apps.CoreConfig",
     "users.apps.UsersConfig",
+    "rooms.apps.RoomsConfig",
 ]
 
-INSTALLED_APPS = DJANGO_APPS + PROJECT_APPS
+INSTALLED_APPS = DJANGO_APPS + PROJECT_APPS + THIRD_PARTY_APPs
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -119,4 +124,5 @@ USE_TZ = True
 
 STATIC_URL = "/static/"
 
+# 우리가 만든 user를 쓰기위해 customizing함.
 AUTH_USER_MODEL = "users.User"

@@ -24,14 +24,10 @@ class User(AbstractUser):
 
     CURRENCY_CHOICES = ((CURRENCY_USE, "usd"), (CURRENCY_KRW, "krw"))
 
-    profile_pic = models.ImageField(null=True, blank=True)
+    profile_pic = models.ImageField(blank=True)
     bio = models.TextField(default="", blank=True)
-    gender = models.CharField(choices=GENDER_CHOICES, max_length=10, null=True)
-    birthdate = models.DateField(null=True)
-    language = models.CharField(
-        choices=LANGUAGE_CHOICES, max_length=2, null=True, blank=True
-    )
-    currency = models.CharField(
-        choices=CURRENCY_CHOICES, max_length=3, null=True, blank=True
-    )
+    gender = models.CharField(choices=GENDER_CHOICES, max_length=10)
+    birthdate = models.DateField(blank=True, null=True)
+    language = models.CharField(choices=LANGUAGE_CHOICES, max_length=2, blank=True)
+    currency = models.CharField(choices=CURRENCY_CHOICES, max_length=3, blank=True)
     superhost = models.BooleanField(default=False)
