@@ -9,6 +9,11 @@ class ItemAdmin(admin.ModelAdmin):
 
     """item admin definition"""
 
+    list_display = ("name", "used_by")
+
+    def used_by(self, obj):
+        return obj.rooms.count()
+
     pass
 
 
@@ -46,6 +51,7 @@ class RoomAdmin(admin.ModelAdmin):
         "check_out",
         "instant_book",
         "count_amenities",
+        "count_photos",
     )
 
     ordering = ("price",)
@@ -68,8 +74,11 @@ class RoomAdmin(admin.ModelAdmin):
 
     # roomadmin 이 self, obj는 row를 받음 이함수를 리스트에 넣음으로 정렬에 갯수 표시가능
     def count_amenities(self, obj):
-        return "potato"
+        return obj.amenities.count()
         # count_amenities.short_descrtiption = " "이렇게 함으로써 컬럼명도 변경 가능
+
+    def count_photos(self, obj):
+        return obj.photos.count()
 
 
 @admin.register(models.Photo)
