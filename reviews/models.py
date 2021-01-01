@@ -21,3 +21,17 @@ class Review(core_models.TimeStampedModel):
 
     def __str__(self):
         return f"{self.review} - {self.room}"
+
+    # function을 전역으로 쓰고 싶으면, 모델에다 만들어 주고 사용할 것
+    def rating_average(self):
+        avg = (
+            self.accuracy
+            + self.communication
+            + self.cleanliness
+            + self.location
+            + self.check_in
+            + self.value
+        ) / 6
+        return round(avg, 2)
+
+        rating_average.short_description = "Avg."
