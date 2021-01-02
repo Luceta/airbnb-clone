@@ -130,3 +130,9 @@ STATIC_URL = "/static/"
 
 # 우리가 만든 user를 쓰기위해 customizing함.
 AUTH_USER_MODEL = "users.User"
+
+MEDIA_ROOT = BASE_DIR / "uploads"
+# 미디어 루트 설정 base dir / url폴더
+
+
+MEDIA_URL = "/media/"
