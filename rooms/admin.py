@@ -20,14 +20,25 @@ class ItemAdmin(admin.ModelAdmin):
     pass
 
 
+class PhotoInline(admin.TabularInline):
+    model = models.Photo
+
+
+class Roominline(admin.TabularInline):
+    model = models.Room
+
+
 @admin.register(models.Room)
 class RoomAdmin(admin.ModelAdmin):
     """ Room Model Definition """
 
+    # 인라인 모델 admin 안에 또 다른 admin은 넣는 법 stacked in line and tabular inline
+    inlines = (PhotoInline,)
+
     fieldsets = (
         (
             "Basic Info",
-            {"fields": ("name", "description", "country", "address", "price")},
+            {"fields": ("name", "description", "country", "city", "address", "price")},
         ),
         ("Times", {"fields": ("check_in", "check_out", "instant_book")}),
         ("Spaces", {"fields": ("guests", "beds", "bedrooms", "baths")}),
@@ -71,6 +82,8 @@ class RoomAdmin(admin.ModelAdmin):
         "country",
     )
 
+    # 호스트를 검색하게해줘 user admin을 통해
+    raw_id_fields = ("host",)
     # 외부 서치바
     search_fields = ("=city", "^host__username")
 

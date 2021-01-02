@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from . import models
+from rooms.admin import Roominline
 
 # admin.py 에  models가져오려면 decorate해주기
 # admin.site.register(models.User, CustomUserAdmin) 과 동일
@@ -11,6 +12,8 @@ from . import models
 class CustomUserAdmin(UserAdmin):
 
     """ custom User Admin """
+
+    inlines = (Roominline,)
 
     fieldsets = UserAdmin.fieldsets + (
         (
