@@ -21,5 +21,5 @@ from django.conf.urls.static import static
 urlpatterns = [path("admin/", admin.site.urls)]
 
 # 아마존에 업로드 할때는 다른 방식을 사용 (개발자 모드에서 아래와 같이 사용)
-# if settings.DEBUG:  # debug모드 체크한 후 내 폴더안의 파일들을 제공 -> 나중에는 debug아니라면, amazon 파일 제공으로 바꿈
-#   urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+if settings.DEBUG:  # debug모드 체크한 후 내 폴더안의 파일들을 제공 -> 나중에는 debug아니라면, amazon 파일 제공으로 바꿈
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
