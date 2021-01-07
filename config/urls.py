@@ -14,11 +14,14 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
-urlpatterns = [path("admin/", admin.site.urls)]
+urlpatterns = [
+    path("admin/", admin.site.urls),
+    path("", include("core.urls", namespace="core")),
+]
 
 # 아마존에 업로드 할때는 다른 방식을 사용 (개발자 모드에서 아래와 같이 사용)
 if settings.DEBUG:  # debug모드 체크한 후 내 폴더안의 파일들을 제공 -> 나중에는 debug아니라면, amazon 파일 제공으로 바꿈
