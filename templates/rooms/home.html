@@ -1,7 +1,15 @@
 {% extends "base.html" %} {% block page_name %}home{% endblock page_name %}
 <!--below body-->
-{% block content %}
-{% for room in rooms %}
+{% block content %} {% for room in rooms %}
 <h1>{{room.name}} / ${{room.price}}</h1>
 {% endfor %}
+
+<h5>
+  {% if page is not 1 %}
+  <a href="?page={{page|add:-1}}">Previous</a>
+  {% endif %} {% if not page == page_count %} Page {{page}} of {{page_count}}
+  <a href="?page={{page|add:1}}">Next</a>
+  {% endif %}
+</h5>
+
 {% endblock %}
