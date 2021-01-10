@@ -1,4 +1,7 @@
-from django.views.generic import ListView
+from django.urls import reverse
+from django.http import Http404
+from django.views.generic import ListView, DetailView
+from django.shortcuts import render
 from . import models
 
 # template 네임과 return html 이름 동일 해야함
@@ -15,6 +18,15 @@ class HomeView(ListView):
     page_kwarg = "page"
     context_object_name = "rooms"
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        return context
+
+"""
+def room_detail(request, pk):
+    try:
+        room = models.Room.objects.get(pk=pk)
+        return render(request, "rooms/detail.html", {"room": room})
+    except models.Room.DoesNotExist:
+        raise Http404()"""
+
+
+class RoomDetail(DetailView):
+    model = models.Room
