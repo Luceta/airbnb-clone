@@ -22,6 +22,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include("core.urls", namespace="core")),
     path("rooms/", include("rooms.urls", namespace="rooms")),
+    path("users/", include("users.urls", namespace="users")),
 ]
 
 # 아마존에 업로드 할때는 다른 방식을 사용 (개발자 모드에서 아래와 같이 사용)
