@@ -5,7 +5,6 @@ from django.contrib.auth import authenticate, login, logout
 from django.views.generic import FormView
 from . import forms
 
-
 # Create your views here.
 class LoginView(View):
     def get(self, request):
@@ -42,4 +41,5 @@ class SignUpView(FormView):
         user = authenticate(self.request, username=email, password=password)
         if user is not None:
             login(self.request, user)
+        user.verify_email()
         return super().form_valid(form)

@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -136,3 +137,11 @@ MEDIA_ROOT = BASE_DIR / "uploads"
 
 
 MEDIA_URL = "/media/"
+
+# Email Configuration
+EMAIL_HOST = "smtp.mailgun.org"
+EMAIL_PORT = "587"
+
+EMAIL_HOST_USER = os.environ.get("MAILGUN_USERNAME")
+EMAIL_HOST_PASSWORD = os.environ.get("MAILGUN_PASSWORD")
+EMAIL_FROM = "airbnbclone@sandbox6357f4f2b8034e1e9307e83fb7a7f3ee.mailgun.org"  # @ 앞은 상관없으나 뒤에 도메인을 일치시켜줄 것
