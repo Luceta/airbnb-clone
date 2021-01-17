@@ -45,15 +45,13 @@ class User(AbstractUser):
 
     def verifiy_email(self):
         if self.email_verified is False:
-            secret = uuid.uuid4().hex[:5]
-            self.email_secrete_code = secret
-            html_message = render_to_string(
-                "emails/verify_email.html", {"secret": secret}
-            )
+            secret = uuid.uuid4().hex[:20]
+            self.email_secret = secret
             send_mail(
                 "Verify Airbnb Account",
-                strip_tags(html_message),
+                f"Verify account, this is your secret: {secret}",
                 settings.EMAIL_FROM,
                 [self.email],
                 fail_silently=False,
             )
+        return
