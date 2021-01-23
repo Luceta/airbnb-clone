@@ -9,7 +9,8 @@ Log in
 {% endblock search-bar %}
 
 {% block content %}
-
+    
+    {% include 'partials/social_login.html' %}
 
    <form method="POST" action="{% url "users:login" %}">
         {% csrf_token %}
