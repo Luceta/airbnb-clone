@@ -1,0 +1,23 @@
+{
+  "name": "airbnb-clone",
+  "version": "1.0.0",
+  "description": "Airbnb Clone",
+  "main": "gulpfile.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Luceta/airbnb-clone.git"
+  },
+  "scripts": {
+    "css": "gulp"
+  },
+  "homepage": "https://github.com/Luceta/airbnb-clone#readme",
+  "devDependencies": {
+    "autoprefixer": "^10.2.3",
+    "gulp": "^4.0.2",
+    "gulp-csso": "^4.0.1",
+    "gulp-postcss": "^9.0.0",
+    "gulp-sass": "^4.1.0",
+    "node-sass": "^5.0.0",
+    "tailwindcss": "^2.0.2"
+  }
+}
