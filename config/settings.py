@@ -129,6 +129,8 @@ USE_TZ = True
 
 STATIC_URL = "/static/"
 
+STATICFILES_DIRS = [BASE_DIR / "static"]
+
 # 우리가 만든 user를 쓰기위해 customizing함.
 AUTH_USER_MODEL = "users.User"
 

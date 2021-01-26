@@ -1,9 +1,11 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
   <title>{% block page_title %}{% endblock page_title %}| Nbnb</title>
 </head>
 
@@ -11,14 +13,14 @@
   <header>
     {% include "partials/nav.html" %}
     {% block search-bar %}
-    <form method="get" action="{% url "rooms:search" %}">
+    <form method="get" action="{% url 'rooms:search' %}">
       <input name="city" placeholder="Search By City" />
     </form>
     {% endblock search-bar %}
   </header>
 
   {% block content %}
-  
+
   {% endblock %}
   {%include "partials/footer.html" %}
 </body>

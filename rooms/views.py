@@ -93,6 +93,8 @@ class SearchView(View):
                 for amenity in amenities:
                     filter_args["amenities"] = amenity
 
+                print(filter_args)
+
                 for facility in facilities:
                     filter_args["facilities"] = facility
 
