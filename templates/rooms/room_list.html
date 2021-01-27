@@ -4,25 +4,35 @@ home
 {% endblock page_name %}
 <!--below body-->
 {% block content %}
-<div class="container mx-auto">
+<div class="container mx-auto pb-10">
     <div class="rounded-xl mx-16  bg-gray-800  h-50vh mt-32 mb-24 bg-center bg-cover  "
         style="background-image:url(https://images.unsplash.com/photo-1523987355523-c7b5b0dd90a7?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NXx8Y2FtcGluZ3xlbnwwfDB8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60)">
     </div>
 
-    <div class="flex flex-wrap mx-12">
+    <div class="flex flex-wrap mx-12 mb-5">
         {% for room in rooms %}
         <!-- django url tag: namespace:path all arguments  rooms:detail-->
         {% include 'partials/room_card.html' with room=room %}
         {% endfor %}
     </div>
-    <h5>
+
+    <div class="flex justify-center mx-auto container">
         {% if page_obj.has_previous %}
-        <a href=" ?page={{page_obj.previous_page_number}}">Previous</a>
-        {% endif %} Page {{page_obj.number}} of {{page_obj.paginator.num_pages}}
-        {%if page_obj.has_next %}
-        <a href="?page={{page_obj.next_page_number}}">Next</a>
+        <a href=" ?page={{page_obj.previous_page_number}}" class="text-green-600">
+            <i class="fas fa-arrow-left fa-lg"></i>
+        </a>
         {% endif %}
-    </h5>
+
+        <span class="mx-3">{{page_obj.number}} of {{page_obj.paginator.num_pages}}</span>
+
+
+        {%if page_obj.has_next %}
+        <a href="?page={{page_obj.next_page_number}}" class="text-green-600">
+            <i class="fas fa-arrow-right fa-lg"></i>
+        </a>
+        {% endif %}
+    </div>
+
 
 
 </div>
