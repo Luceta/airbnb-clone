@@ -12,7 +12,7 @@ home
     <div class="flex flex-wrap mx-12 mb-5">
         {% for room in rooms %}
         <!-- django url tag: namespace:path all arguments  rooms:detail-->
-        {% include 'partials/room_card.html' with room=room %}
+        {% include 'mixins/room_card.html' with room=room %}
         {% endfor %}
     </div>
 
